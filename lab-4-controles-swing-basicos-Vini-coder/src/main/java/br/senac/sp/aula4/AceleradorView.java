@@ -42,11 +42,11 @@ public class AceleradorView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnAcelerar = new javax.swing.JButton();
         btnFrear = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        lblAcelerar = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblVelocidadeAtual = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        fttFrear = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -60,11 +60,14 @@ public class AceleradorView extends javax.swing.JFrame {
 
         btnAcelerar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seta-cima.png"))); // NOI18N
         btnAcelerar.setText("Acelerar");
+        btnAcelerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcelerarActionPerformed(evt);
+            }
+        });
 
         btnFrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seta-baixo.png"))); // NOI18N
         btnFrear.setText("Frear");
-
-        jTextField1.setText("jTextField1");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -97,8 +100,6 @@ public class AceleradorView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jFormattedTextField1.setText("jFormattedTextField1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,9 +113,9 @@ public class AceleradorView extends javax.swing.JFrame {
                     .addComponent(btnFrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addGap(56, 56, 56))
+                    .addComponent(lblAcelerar, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(fttFrear))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,11 +126,11 @@ public class AceleradorView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnFrear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(fttFrear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -171,6 +172,17 @@ public class AceleradorView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAcelerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcelerarActionPerformed
+        
+        if(lblAcelerar.getText().trim().equals("")) {
+            meuCarro.acelelar();
+        } else {
+            meuCarro.acelelar(Integer.parseInt(lblAcelerar.getText()));
+        }
+        
+        lblVelocidadeAtual.setText(Integer.toString(meuCarro.getVelocidadeAtual()));
+    }//GEN-LAST:event_btnAcelerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,7 +226,7 @@ public class AceleradorView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcelerar;
     private javax.swing.JButton btnFrear;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField fttFrear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -223,7 +235,7 @@ public class AceleradorView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField lblAcelerar;
     private javax.swing.JLabel lblVelocidadeAtual;
     // End of variables declaration//GEN-END:variables
 }
