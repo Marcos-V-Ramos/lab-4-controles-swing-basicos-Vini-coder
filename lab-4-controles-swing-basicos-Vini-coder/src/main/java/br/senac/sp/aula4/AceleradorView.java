@@ -68,6 +68,11 @@ public class AceleradorView extends javax.swing.JFrame {
 
         btnFrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seta-baixo.png"))); // NOI18N
         btnFrear.setText("Frear");
+        btnFrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFrearActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -136,15 +141,25 @@ public class AceleradorView extends javax.swing.JFrame {
 
         jMenu1.setText("Menu");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem1.setText("Acelerar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem2.setText("Frear");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         jMenuItem3.setText("Sair");
         jMenu1.add(jMenuItem3);
@@ -183,6 +198,35 @@ public class AceleradorView extends javax.swing.JFrame {
         
         lblVelocidadeAtual.setText(Integer.toString(meuCarro.getVelocidadeAtual()));
     }//GEN-LAST:event_btnAcelerarActionPerformed
+
+    private void btnFrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFrearActionPerformed
+        
+        if(fttFrear.getText().trim().equals("")){
+            meuCarro.frear();
+        } else {
+            meuCarro.frear(Integer.parseInt(fttFrear.getText()));
+        }
+        
+        lblVelocidadeAtual.setText(Integer.toString(meuCarro.getVelocidadeAtual()));
+    }//GEN-LAST:event_btnFrearActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+        if(lblAcelerar.getText().trim().equals("")) {
+            meuCarro.acelelar();
+        } else {
+            meuCarro.acelelar(Integer.parseInt(lblAcelerar.getText()));
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        
+        if(fttFrear.getText().trim().equals("")){
+            meuCarro.frear();
+        } else {
+            meuCarro.frear(Integer.parseInt(fttFrear.getText()));
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
